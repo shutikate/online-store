@@ -2,14 +2,15 @@ import Navigation from "./pages/navigation/navigation.page";
 import ShoppingCart from "./pages/shopping-cart/shopping-cart.page";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import Test from "./pages/test/test.component";
+import MainPage from "./pages/mainPage/mainPage.component";
 
 const App = () => {
+
   return (
     <Routes>
       <Route path="/" element={<Navigation />}>
         <Route path="shopcart" element={<ShoppingCart />} />
-        <Route path="/" element={<Test />} />
+        <Route path="/" element={<MainPage />} />
       </Route>
     </Routes>
   );
