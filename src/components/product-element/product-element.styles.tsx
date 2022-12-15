@@ -10,13 +10,13 @@ export const ProductElementContainer = styled.div`
 
   div {
     width: 100%;
-    position: relative;
+    height: 45px;
     margin-bottom: 5px;
     display: flex;
     justify-content: space-between;
+    align-items: end;
     font-size: 18px;
     background-color: #ffffff;
-    z-index: 1;
   }
 
   p {
