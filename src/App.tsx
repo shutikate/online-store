@@ -2,16 +2,22 @@ import Navigation from "./pages/navigation/navigation.page";
 import ShoppingCart from "./pages/shopping-cart/shopping-cart.page";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import Test from "./pages/test/test.component";
+import MainPage from "./pages/mainPage/main.page";
+import { useGetProducts } from "./hooks/useGetProducts";
+import { ProductsContext } from './context/productsContext';
 
 const App = () => {
+  const products = useGetProducts();
+
   return (
-    <Routes>
-      <Route path="/" element={<Navigation />}>
-        <Route path="shopcart" element={<ShoppingCart />} />
-        <Route path="/" element={<Test />} />
-      </Route>
-    </Routes>
+    <ProductsContext.Provider value={products}>
+      <Routes>
+        <Route path="/" element={<Navigation />}>
+          <Route path="shopcart" element={<ShoppingCart />} />
+          <Route path="/" element={<MainPage />} />
+        </Route>
+      </Routes>
+    </ProductsContext.Provider>
   );
 };
 
