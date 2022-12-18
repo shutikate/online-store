@@ -1,16 +1,16 @@
 import Navigation from "./pages/navigation/navigation.page";
-import ShoppingCart from "./pages/shopping-cart/shopping-cart.page";
+import ShoppingCart from "./pages/shopping-cart/shoppingCart";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import MainPage from "./pages/mainPage/main.page";
-import { useGetProducts } from "./hooks/useGetProducts";
+import MainPage from "./pages/main/main";
+import { useProducts } from "./hooks/useProducts";
 import { ProductsContext } from './context/productsContext';
 
 const App = () => {
-  const products = useGetProducts();
+  const productsData = useProducts();
 
   return (
-    <ProductsContext.Provider value={products}>
+    <ProductsContext.Provider value={productsData}>
       <Routes>
         <Route path="/" element={<Navigation />}>
           <Route path="shopcart" element={<ShoppingCart />} />

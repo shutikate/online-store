@@ -11,15 +11,14 @@ export const ProductsSorting = styled.div`
 `
 
 export const SortBlock = styled.div`
-  padding: 10px 50px;
-  font-size: 22px;
+  padding: 10px 20px;
+  font-size: 2rem;
   background-color: rgba(201, 195, 195, 0.6);
-  color: rgba(74,74,74);
   cursor: pointer;
 
   &:hover {
     ul {
-      transform: translateY(-70px);
+      transform: translateY(-25px);
     }
   }
 `
@@ -33,8 +32,8 @@ export const SortItems = styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 400px;
-  font-size: 24px;
+  height: 300px;
+  font-size: 2rem;
   background-color: rgba(255, 255, 255, 0.95);
   z-index: 1;
   transform: translateY(-500px);
@@ -47,9 +46,15 @@ export const SortItems = styled.ul`
     transition: all 0.5s;
 
     &:hover {
-      font-size: 26px;
+      font-size: 2.2rem;
     }
   }
+`
+
+export const FoundProducts = styled.div`
+  display: flex;
+  font-size: 2rem;
+  color: rgba(74, 74, 74);
 `
 
 export const SearchInput = styled.input`
@@ -57,11 +62,10 @@ export const SearchInput = styled.input`
   border-bottom: 2px solid rgba(201, 195, 195);
   width: 300px;
   padding: 10px;
-  font-size: 20px;
+  font-size: 1.8rem;
 
   &:focus {
     outline: none;
     outline-bottom: rgba(201, 195, 195);
-    color: rgba(74,74,74);
   }
 `

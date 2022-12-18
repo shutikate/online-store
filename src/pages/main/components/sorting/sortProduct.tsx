@@ -1,6 +1,13 @@
-import { ProductsSorting, SortBlock, SortItems, SearchInput } from './sortProduct.component.styles';
+import { ProductsSorting, SortBlock, SortItems, SearchInput, FoundProducts } from './sortProduct.styled';
+import { useSearchParams } from 'react-router-dom';
 
 const SortProduct = () => {
+  // const [ , setSearchParams ] = useSearchParams();
+
+  // const onClick = () => {
+  //   setSearchParams({hello: ['world', 'ws']})
+  // }
+
   return (
     <ProductsSorting>
       <SortBlock>
@@ -14,7 +21,7 @@ const SortProduct = () => {
           <li>Descending discount</li>
         </SortItems>
       </SortBlock>
-      <div><span>Found:</span><span> 100</span></div>
+      <FoundProducts><span>Found:</span><span> 100</span></FoundProducts>
       <SearchInput type="text" placeholder="Search product"></SearchInput>
       <div></div>
       <div></div>

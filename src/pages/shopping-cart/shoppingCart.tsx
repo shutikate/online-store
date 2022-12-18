@@ -3,7 +3,7 @@ import {
   CheckoutHeader,
   HeaderBlock,
   Total,
-} from "./shopping-cart.styles";
+} from "./shoppingCart.styled";
 const ShoppingCart = () => {
   const cartTotal = 0;
 

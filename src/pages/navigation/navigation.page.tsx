@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Outlet } from "react-router-dom";
 
-import CartIcon from "../../components/cart-icon/cart-icon.component";
+import CartIcon from "../../components/cart-icon/cartIcon";
 //import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
 
 import {

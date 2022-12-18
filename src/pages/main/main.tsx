@@ -1,7 +1,7 @@
 import { Fragment } from "react";
-import ProductsList from './products/productsList.component';
-import SortProduct from './filters/sortProduct.component';
-import { MainPageStyle } from './main.styles';
+import ProductsList from './components/products/productsList';
+import SortProduct from './components/sorting/sortProduct';
+import { MainPageStyle } from './main.styled';
 
 const MainPage = () => {
   return (
