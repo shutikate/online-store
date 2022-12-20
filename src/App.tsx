@@ -1,10 +1,10 @@
-import Navigation from "./pages/navigation/navigation.page";
-import ShoppingCart from "./pages/shopping-cart/shopping-cart.page";
+import Navigation from "./components/navigation/navigation";
+import ShoppingCart from "./pages/shopping-cart/shopping-cart";
 import  NotFound from "./pages/not-found/not-found";
 import { Route, Routes } from "react-router-dom";
-import MainPage from "./pages/mainPage/main.page";
-import { useGetProducts } from "./hooks/useGetProducts";
-import { ProductsContext } from './context/productsContext';
+import MainPage from "./pages/main/main";
+import { useGetProducts } from "./hooks/use-get-products";
+import { ProductsContext } from './context/products-context';
 
 const App = () => {
   const productsData = useGetProducts();

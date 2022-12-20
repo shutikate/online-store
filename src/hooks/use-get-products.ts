@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { IProducts, getAllProducts } from '../api/products';
-import { useFilters } from './useFilters';
+import { useFilters } from './use-filters';
 
 export const useGetProducts = () => {
   const [allProducts, setProducts] = useState<IProducts[]>([]);
