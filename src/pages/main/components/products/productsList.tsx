@@ -10,7 +10,7 @@ const ProductsList = () => {
     <ProductElementWrapper>
       {
         currentProducts.map((product) =>
-        <ProductElement title ={product.title} price={product.price} thumbnail={product.thumbnail} id={product.id} key={product.id}/>
+        <ProductElement key={product.id} {...product} />
         )
       }
     </ProductElementWrapper>

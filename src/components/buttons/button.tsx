@@ -3,11 +3,12 @@ import { FC } from 'react';
 
 type Button = {
   text: string;
+  onClick: () => void;
 }
 
 const Button: FC<Button> = (props) => {
   return (
-    <ButtonStyled>{props.text}</ButtonStyled>
+    <ButtonStyled onClick={props.onClick}>{props.text}</ButtonStyled>
   )
 }
 

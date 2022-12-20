@@ -4,7 +4,17 @@ import {
   HeaderBlock,
   Total,
 } from "./shoppingCart.styled";
+
+
+import { ProductsContext } from '../../context/productsContext';
+import { useContext } from "react";
 const ShoppingCart = () => {
+
+  const { productsIdForCart } = useContext(ProductsContext);
+  console.log(productsIdForCart);
+
+
+  
   const cartTotal = 0;
 
   return (
