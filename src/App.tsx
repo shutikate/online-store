@@ -1,20 +1,22 @@
 import Navigation from "./pages/navigation/navigation.page";
-import ShoppingCart from "./pages/shopping-cart/shoppingCart";
+import ShoppingCart from "./pages/shopping-cart/shopping-cart.page";
+import  NotFound from "./pages/not-found/not-found";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import MainPage from "./pages/main/main";
-import { useProducts } from "./hooks/useProducts";
+import MainPage from "./pages/mainPage/main.page";
+import { useGetProducts } from "./hooks/useGetProducts";
 import { ProductsContext } from './context/productsContext';
 
 const App = () => {
-  const productsData = useProducts();
+  const productsData = useGetProducts();
 
   return (
     <ProductsContext.Provider value={productsData}>
       <Routes>
         <Route path="/" element={<Navigation />}>
+          <Route index element={<MainPage />} />
           <Route path="shopcart" element={<ShoppingCart />} />
-          <Route path="/" element={<MainPage />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </ProductsContext.Provider>
