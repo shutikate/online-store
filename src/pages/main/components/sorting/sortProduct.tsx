@@ -1,5 +1,4 @@
 import { ProductsSorting, SortBlock, SortItems, SearchInput, FoundProducts } from './sortProduct.styled';
-import { useSearchParams } from 'react-router-dom';
 
 const SortProduct = () => {
   // const [ , setSearchParams ] = useSearchParams();
