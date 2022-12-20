@@ -1,4 +1,4 @@
-import { ProductsSorting, SortBlock, SortItems, SearchInput, FoundProducts } from './sortProduct.styled';
+import { ProductsSorting, SortBlock, SortItems, SearchInput, FoundProducts } from './sort-product.styled';
 
 const SortProduct = () => {
   // const [ , setSearchParams ] = useSearchParams();

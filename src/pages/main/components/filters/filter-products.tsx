@@ -1,4 +1,4 @@
-import { FilterWrapper } from './filterProducts.styled';
+import { FilterWrapper } from './filter-products.styled';
 
 const FilterProduct = () => {
   return (

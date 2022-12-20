@@ -3,10 +3,10 @@ import {
   CheckoutHeader,
   HeaderBlock,
   Total,
-} from "./shoppingCart.styled";
+} from "./shopping-cart.styled";
 
 
-import { ProductsContext } from '../../context/productsContext';
+import { ProductsContext } from '../../context/products-context';
 import { useContext } from "react";
 const ShoppingCart = () => {
 

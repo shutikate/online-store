@@ -1,4 +1,4 @@
-import { ShoppingIcon, CartIconContainer, ItemCount } from "./cartIcon.styled";
+import { ShoppingIcon, CartIconContainer, ItemCount } from "./cart-icon.styled";
 const CartIcon = () => {
   //const { isCartOpen, setIsCartOpen, cartCount } = useContext(CartContext);
   const cartCount = 0;

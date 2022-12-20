@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Outlet } from "react-router-dom";
 
-import CartIcon from "../../components/cart-icon/cartIcon";
+import CartIcon from "../cart-icon/cart-icon";
 //import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
 
 import {
@@ -10,7 +10,7 @@ import {
   NavLinks,
   LogoContainer,
   LogoText,
-} from "./navigation.styles";
+} from "./navigation.styled";
 
 const Navigation = () => {
   return (

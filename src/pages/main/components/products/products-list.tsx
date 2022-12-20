@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { ProductElementWrapper } from "./productsList.styled";
-import ProductElement from "../../../../components/product-element/product-element.component";
-import { ProductsContext } from '../../../../context/productsContext';
+import { ProductElementWrapper } from "./products-list.styled";
+import ProductElement from "../../../../components/product-element/product-element";
+import { ProductsContext } from '../../../../context/products-context';
 
 const ProductsList = () => {
   const { currentProducts } = useContext(ProductsContext);
