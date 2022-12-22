@@ -24,3 +24,8 @@ export const ButtonWrapper = styled.div`
   justify-content: space-between;
 `
 
+export const BrandsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+` 
+

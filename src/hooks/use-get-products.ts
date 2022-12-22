@@ -5,7 +5,7 @@ import { useFilters } from './use-filters';
 export const useGetProducts = () => {
   const [allProducts, setProducts] = useState<IProducts[]>([]);
   const [productsIdForCart, setCartIdProducts] = useState<number[]>([]);
-  const currentProducts = useFilters(allProducts);
+  const filteresData = useFilters(allProducts);
 
   const addProductIdToCart = (id: number) => {
     setCartIdProducts([...productsIdForCart, id]);
@@ -16,5 +16,5 @@ export const useGetProducts = () => {
       .then(products => setProducts(products));
   }, []);
 
-  return {allProducts, currentProducts, productsIdForCart, cartProducts: [], addProductIdToCart };
+  return {...filteresData, allProducts, productsIdForCart, cartProducts: [], addProductIdToCart };
 };
