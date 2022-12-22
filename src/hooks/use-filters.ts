@@ -19,7 +19,16 @@ const filterByPrice = (product: IProducts, params: string[]) => {
     return product.price === Number(params[0]);
   } else {
     const paramsSort = params.sort((a, b) => Number(a) - Number(b));
-    return (product.price > Number(paramsSort[0]) && product.price < Number(paramsSort[1]));
+    return (product.price >= Number(paramsSort[0]) && product.price <= Number(paramsSort[1]));
+  }
+};
+
+const filterByStock = (product: IProducts, params: string[]) => {
+  if (params.length === 1) {
+    return product.stock === Number(params[0]);
+  } else {
+    const paramsSort = params.sort((a, b) => Number(a) - Number(b));
+    return (product.stock >= Number(paramsSort[0]) && product.stock <= Number(paramsSort[1]));
   }
 };
 
@@ -31,7 +40,8 @@ const filterMatcher = {
   category: filterByCategories,
   brand: filterByBrands,
   price: filterByPrice,
-  search: filterBySearch
+  search: filterBySearch,
+  stock: filterByStock
 };
 
 export const useFilters = (products: IProducts[]) => {

@@ -1,7 +1,6 @@
 import styled from "styled-components"
 
 export const ProductsSorting = styled.div`
-  width: 60%;
   position: relative;
   padding: 0 30px;
   margin-bottom: 20px;
