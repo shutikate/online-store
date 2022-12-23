@@ -2,9 +2,6 @@ import { useMemo, useState } from 'react';
 import { useSearchParams, } from 'react-router-dom';
 import { IProducts } from '../api/products';
 
-export const makeUnique = (paramsKeys: string[]) =>
-  paramsKeys.filter((param, index, arr) => arr.indexOf(param) === index);
-
 const filterByCategories = (product: IProducts, params: string[]) => {
   return params.some((param) => param === product.category);
 };
@@ -48,12 +45,12 @@ export const useFilters = (products: IProducts[]) => {
   const [ usedFilter, updateUsedFilter ] = useState('');
 
   const currentProducts = useMemo(() => {
-    const paramKeys = makeUnique([...searchParams.keys()]);
+    const paramKeys = [...searchParams.keys()];
 
     return products.filter(product =>
       paramKeys.every(param =>
         !(param in filterMatcher) ||
-        filterMatcher[param as keyof typeof filterMatcher](product, searchParams.getAll(param))
+        filterMatcher[param as keyof typeof filterMatcher](product, searchParams.get(param)?.split('↕') ?? [])
       )
     );
   }, [products, searchParams.toString()])

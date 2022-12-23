@@ -1,33 +1,40 @@
-import { useSearchParams, } from "react-router-dom";
-import { useContext, useState, useMemo, useEffect } from "react";
+// import { useSearchParams, } from "react-router-dom";
+import { useContext, useMemo } from "react";
 import { ProductsContext } from "../../../../context/products-context";
-import { BrandsWrapper } from "./filter-brands.styled";
-import { makeUnique } from "../../../../hooks/use-filters";
-import ProductElement from "../../../../components/product-element/product-element";
+import { Wrapper, Input, Label, NumberOfProducts } from "./checkbox.styled";
+
+const makeUnique = (paramsKeys: string[]) =>
+  paramsKeys.filter((param, index, arr) => arr.indexOf(param) === index);
 
 const FilterBrands = () => {
-  const [ , setSearchParams ] = useSearchParams();
-  const { currentProducts } = useContext(ProductsContext);
+  // const [ , setSearchParams ] = useSearchParams();
+  // const { currentProducts } = useContext(ProductsContext);
   const { allProducts } = useContext(ProductsContext);
+
+  console.log(allProducts);
 
   const BrandsOfProducts = useMemo(
     () => makeUnique(allProducts.map((product) => product?.brand ?? [])),
-    [allProducts]);
+    [allProducts]
+  );
 
-    console.log(BrandsOfProducts);
-
-return (
-  <>
-    {
-        BrandsOfProducts.map((brand) =>
-          <div key={brand}>
-            <input type="checkbox" id={brand}></input>
-            <label htmlFor={brand}>{brand}</label>
-          </div>
-        )
-    }
-  </>
-)
+  return (
+    <>
+      {
+          BrandsOfProducts.map((brand) =>
+            <Wrapper key={brand}>
+              <Input type="checkbox" id={brand}></Input>
+              <Label htmlFor={brand}>{brand}</Label>
+              <NumberOfProducts>
+                <span>5</span>
+                <span>/</span>
+                <span>5</span>
+              </NumberOfProducts>
+            </Wrapper>
+          )
+      }
+    </>
+  )
 }
 
 export default FilterBrands;

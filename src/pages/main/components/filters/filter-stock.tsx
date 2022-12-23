@@ -4,7 +4,7 @@ import { ProductsContext } from '../../../../context/products-context';
 import { useSearchParams, } from 'react-router-dom';
 
 const FilterStock = () => {
-  const [ , setSearchParams ] = useSearchParams();
+  const [ searchParams, setSearchParams ] = useSearchParams();
   const { currentProducts, allProducts, usedFilter, updateUsedFilter } = useContext(ProductsContext);
 
   const [rangeStockMin, setRangeStockMin] = useState(0);
@@ -33,13 +33,15 @@ const FilterStock = () => {
 
   const changeStockFirst = (e: React.ChangeEvent<HTMLInputElement>) => {
     setRangeStockMin(Number(e.target.value));
-    setSearchParams({stock: [e.target.value, String(rangeStockMax)]});
+    searchParams.set('stock', `${Number(e.target.value)}` + '↕' + `${rangeStockMax}`);
+    setSearchParams(searchParams);
     updateUsedFilter('stock');
   }
 
   const changeStockSecond = (e: React.ChangeEvent<HTMLInputElement>) => {
     setRangeStockMax(Number(e.target.value));
-    setSearchParams({stock: [String(rangeStockMin), e.target.value]});
+    searchParams.set('stock', `${rangeStockMin}` + '↕' + `${Number(e.target.value)}`);
+    setSearchParams(searchParams);
     updateUsedFilter('stock');
   }
 

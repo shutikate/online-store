@@ -27,5 +27,7 @@ export const ButtonWrapper = styled.div`
 export const BrandsWrapper = styled.div`
   display: flex;
   flex-direction: column;
-` 
+  height: 270px;
+  overflow-y: scroll;
+`
 

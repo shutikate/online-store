@@ -1,10 +1,10 @@
 import { useContext, useState, useMemo, useEffect } from 'react';
 import RangeSlider from '../../../../components/range-slider/range-slider';
 import { ProductsContext } from '../../../../context/products-context';
-import { useSearchParams, } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 const FilterPrice = () => {
-  const [ , setSearchParams ] = useSearchParams();
+  const [ searchParams, setSearchParams ] = useSearchParams();
   const { currentProducts } = useContext(ProductsContext);
   const { allProducts, usedFilter, updateUsedFilter } = useContext(ProductsContext);
 
@@ -34,14 +34,16 @@ const FilterPrice = () => {
 
   const changePriceFirst = (e: React.ChangeEvent<HTMLInputElement>) => {
     setRangePriceMin(Number(e.target.value));
-    setSearchParams({price: [e.target.value, String(rangePriceMax)]});
     updateUsedFilter('price');
+    searchParams.set('price', `${Number(e.target.value)}` + '↕' + `${rangePriceMax}`);
+    setSearchParams(searchParams);
   }
 
   const changePriceSecond = (e: React.ChangeEvent<HTMLInputElement>) => {
     setRangePriceMax(Number(e.target.value));
-    setSearchParams({price: [String(rangePriceMin), e.target.value]});
     updateUsedFilter('price');
+    searchParams.set('price', `${rangePriceMin}` + '↕' + `${Number(e.target.value)}`);
+    setSearchParams(searchParams);
   }
 
   return (
