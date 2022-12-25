@@ -1,11 +1,14 @@
 import { ProductsSorting, SortBlock, SortItems, SearchInput, FoundProducts } from './sort-product.styled';
+import { ProductsContext } from '../../../../context/products-context';
+import { useContext, useMemo } from 'react';
 
 const SortProduct = () => {
-  // const [ , setSearchParams ] = useSearchParams();
 
-  // const onClick = () => {
-  //   setSearchParams({hello: ['world', 'ws']})
-  // }
+  const { currentProducts } = useContext(ProductsContext);
+
+  const NumOfProducts =  useMemo(
+    () => currentProducts.length,
+    [currentProducts]);
 
   return (
     <ProductsSorting>
@@ -20,7 +23,7 @@ const SortProduct = () => {
           <li>Descending discount</li>
         </SortItems>
       </SortBlock>
-      <FoundProducts><span>Found:</span><span> 100</span></FoundProducts>
+      <FoundProducts><span>Found:</span><span>{NumOfProducts}</span></FoundProducts>
       <SearchInput type="text" placeholder="Search product"></SearchInput>
       <div></div>
       <div></div>

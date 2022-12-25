@@ -6,7 +6,9 @@ interface productsData {
   currentProducts: IProducts[],
   productsIdForCart: number[],
   cartProducts: IProducts[]
-  addProductIdToCart: (id: number) => void
+  addProductIdToCart: (id: number) => void,
+  usedFilter: string,
+  updateUsedFilter: (filter: string) => void,
 }
 
 export const ProductsContext = React.createContext<productsData>({
@@ -14,6 +16,9 @@ export const ProductsContext = React.createContext<productsData>({
   currentProducts: [],
   productsIdForCart: [],
   cartProducts: [],
+  usedFilter: '',
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  updateUsedFilter: () => {},
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   addProductIdToCart: () => {},
 });

@@ -1,7 +1,6 @@
 import styled from "styled-components"
 
 export const ProductsSorting = styled.div`
-  width: 60%;
   position: relative;
   padding: 0 30px;
   margin-bottom: 20px;
@@ -11,14 +10,27 @@ export const ProductsSorting = styled.div`
 `
 
 export const SortBlock = styled.div`
-  padding: 10px 20px;
-  font-size: 2rem;
-  background-color: rgba(201, 195, 195, 0.6);
+  min-width: 16.5rem;
+  width: auto;
+  height: 4rem;
+  padding: 0 2rem 0 2rem;
+  font-size: 1rem;
+  background-color: black;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bolder;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
 
   &:hover {
     ul {
       transform: translateY(-25px);
+      color: black;
+      text-transform: none;
     }
   }
 `
@@ -33,7 +45,7 @@ export const SortItems = styled.ul`
   flex-direction: column;
   justify-content: space-around;
   height: 300px;
-  font-size: 2rem;
+  font-size: 1.8rem;
   background-color: rgba(255, 255, 255, 0.95);
   z-index: 1;
   transform: translateY(-500px);
@@ -46,7 +58,7 @@ export const SortItems = styled.ul`
     transition: all 0.5s;
 
     &:hover {
-      font-size: 2.2rem;
+      font-size: 2rem;
     }
   }
 `
@@ -55,17 +67,26 @@ export const FoundProducts = styled.div`
   display: flex;
   font-size: 2rem;
   color: rgba(74, 74, 74);
+
+  span {
+    margin-right: 10px;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    font-weight: bolder;
+  }
 `
 
 export const SearchInput = styled.input`
   border: none;
-  border-bottom: 2px solid rgba(201, 195, 195);
+  border-bottom: 2px solid black;
   width: 300px;
   padding: 10px;
-  font-size: 1.8rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: bolder;
 
   &:focus {
     outline: none;
-    outline-bottom: rgba(201, 195, 195);
+    outline-bottom: black;
   }
 `
