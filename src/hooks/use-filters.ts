@@ -3,11 +3,11 @@ import { useSearchParams, } from 'react-router-dom';
 import { IProducts } from '../api/products';
 
 const filterByCategories = (product: IProducts, params: string[]) => {
-  return params.some((param) => param === product.category);
+  return params.some((param) => param === product.category.toLowerCase());
 };
 
 const filterByBrands = (product: IProducts, params: string[]) => {
-  return params.some((param) => param === product.brand);
+  return params.some((param) => param === product.brand.toLowerCase());
 }
 
 const filterByPrice = (product: IProducts, params: string[]) => {

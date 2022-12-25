@@ -1,7 +1,8 @@
-import { FilterWrapper, NameFiltersBlock, ButtonWrapper, BrandsWrapper } from './filter-products.styled';
+import { FilterWrapper, NameFiltersBlock, ButtonWrapper, ProductsWrapper } from './filter-products.styled';
 import FilterPrice from './filter-price';
 import FilterStock from './filter-stock';
 import FilterBrands from './filter-brands';
+import FilterCategory from './filter-category';
 import Button from '../../../../components/buttons/buttons';
 
 const FilterProduct = () => {
@@ -16,10 +17,14 @@ const FilterProduct = () => {
       <FilterPrice />
       <NameFiltersBlock>Stock</NameFiltersBlock>
       <FilterStock />
+      <NameFiltersBlock>Category</NameFiltersBlock>
+      <ProductsWrapper>
+        <FilterCategory />
+      </ProductsWrapper>
       <NameFiltersBlock>Brand</NameFiltersBlock>
-      <BrandsWrapper>
+      <ProductsWrapper>
         <FilterBrands />
-      </BrandsWrapper>
+      </ProductsWrapper>
     </FilterWrapper>
   )
 }

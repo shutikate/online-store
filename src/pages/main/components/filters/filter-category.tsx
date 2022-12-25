@@ -4,49 +4,49 @@ import { ProductsContext } from "../../../../context/products-context";
 import { Wrapper, Input, Label, NumberOfProducts } from "./checkbox.styled";
 import { IProducts } from "../../../../api/products";
 
-export const getBrandsWithNums = (products: IProducts[]) =>
+export const getCategoriesWithNums = (products: IProducts[]) =>
   products.reduce<Record<string, number>>((acc, product) => {
-    const brand = product.brand.toLowerCase();
-    acc[brand] = (acc[brand] || 0) + 1;
+    const category = product.category.toLowerCase();
+    acc[category] = (acc[category] || 0) + 1;
     return acc;
   }, {});
 
-const FilterBrands = () => {
+const FilterCategory = () => {
   const [ searchParams, setSearchParams ] = useSearchParams();
   const { currentProducts } = useContext(ProductsContext);
   const { allProducts } = useContext(ProductsContext);
 
-  const allBrands = useMemo(
-    () => getBrandsWithNums(allProducts),
+  const allCategories = useMemo(
+    () => getCategoriesWithNums(allProducts),
     [allProducts]
   );
 
-  const currentBrands = useMemo(
-    () => getBrandsWithNums(currentProducts),
+  const currentCategories = useMemo(
+    () => getCategoriesWithNums(currentProducts),
     [currentProducts]
   );
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const currentParams = searchParams.get('brand')?.split('↕') ?? [];
+    const currentParams = searchParams.get('category')?.split('↕') ?? [];
     const current = event.target.id;
     const changedParams = currentParams.includes(current)
       ? currentParams.filter(param => param !== current)
       : currentParams.concat(current);
     changedParams.length === 0
-      ? searchParams.delete('brand')
-      : searchParams.set('brand', changedParams.join('↕'));
+      ? searchParams.delete('category')
+      : searchParams.set('category', changedParams.join('↕'));
     setSearchParams(searchParams);
   };
 
   return (
     <>
       {
-        Object.entries(allBrands).map(([key,value]) =>
+        Object.entries(allCategories).map(([key,value]) =>
           <Wrapper key={key}>
-           <Input type="checkbox" id={key} checked={searchParams.get('brand')?.includes(key) ?? false} onChange={handleChange}></Input>
+           <Input type="checkbox" id={key} checked={searchParams.get('category')?.includes(key) ?? false} onChange={handleChange}></Input>
            <Label htmlFor={key}>{key}</Label>
            <NumberOfProducts>
-             <span>{currentBrands[key] ? currentBrands[key] : 0}</span>
+             <span>{currentCategories[key] ? currentCategories[key] : 0}</span>
              <span>/</span>
              <span>{value}</span>
            </NumberOfProducts>
@@ -57,4 +57,4 @@ const FilterBrands = () => {
   )
 }
 
-export default FilterBrands;
+export default FilterCategory;

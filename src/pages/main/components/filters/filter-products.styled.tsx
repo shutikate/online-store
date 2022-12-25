@@ -14,7 +14,9 @@ export const NameFiltersBlock = styled.div`
   margin-bottom: 20px;
   background-color: #000000;
   color: #ffffff;
-  font-size: 2rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: bolder;
   text-align: center;
 `
 
@@ -24,9 +26,10 @@ export const ButtonWrapper = styled.div`
   justify-content: space-between;
 `
 
-export const BrandsWrapper = styled.div`
+export const ProductsWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 20px;
   height: 270px;
   overflow-y: scroll;
 `

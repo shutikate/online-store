@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const BaseButton = styled.button`
   min-width: 16.5rem;
   width: auto;
-  height: 5rem;
-  padding: 0 3rem 0 3rem;
+  height: 4rem;
+  padding: 0 2rem 0 2rem;
   font-size: 1rem;
   background-color: black;
   color: white;
