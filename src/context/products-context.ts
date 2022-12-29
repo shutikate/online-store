@@ -1,12 +1,17 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import React from 'react';
 import { IProducts } from '../api/products';
 
 interface productsData {
   allProducts: IProducts[],
   currentProducts: IProducts[],
-  productsIdForCart: number[],
   cartProducts: IProducts[]
   addProductIdToCart: (id: number) => void,
+  dropProductFromCart: (id: number) => void,
+  increaseProductAmount: (id: number) => void,
+  decreaseProductAmount: (id: number) => void,
+  getProductAmountInCart: (id: number) => number,
+  isProductInCart: (id?: number) => boolean,
   usedFilter: string,
   updateUsedFilter: (filter: string) => void,
 }
@@ -14,11 +19,13 @@ interface productsData {
 export const ProductsContext = React.createContext<productsData>({
   allProducts: [],
   currentProducts: [],
-  productsIdForCart: [],
   cartProducts: [],
   usedFilter: '',
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   updateUsedFilter: () => {},
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   addProductIdToCart: () => {},
+  dropProductFromCart: () => {},
+  increaseProductAmount: () => {},
+  decreaseProductAmount: () => {},
+  getProductAmountInCart: () => 0,
+  isProductInCart: () => false
 });

@@ -31,16 +31,20 @@ const FilterStock = () => {
 
   }, [currentProducts, usedFilter, rangeStockMin]);
 
-  const changeStockFirst = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setRangeStockMin(Number(e.target.value));
-    searchParams.set('stock', `${Number(e.target.value)}` + '↕' + `${rangeStockMax}`);
+  const changeStockFirst = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setRangeStockMin(Number(event.target.value));
+    searchParams.set('stock', (Number(event.target.value) < rangeStockMax) ?
+                    `${Number(event.target.value)}` + '↕' + `${rangeStockMax}`:
+                    `${rangeStockMax}` + '↕' + `${Number(event.target.value)}`);
     setSearchParams(searchParams);
     updateUsedFilter('stock');
   }
 
-  const changeStockSecond = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setRangeStockMax(Number(e.target.value));
-    searchParams.set('stock', `${rangeStockMin}` + '↕' + `${Number(e.target.value)}`);
+  const changeStockSecond = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setRangeStockMax(Number(event.target.value));
+    searchParams.set('stock', (Number(event.target.value) > rangeStockMin) ?
+                    `${rangeStockMin}` + '↕' + `${Number(event.target.value)}`:
+                    `${Number(event.target.value)}` + '↕' + `${rangeStockMin}`);
     setSearchParams(searchParams);
     updateUsedFilter('stock');
   }
@@ -49,8 +53,8 @@ const FilterStock = () => {
     <RangeSlider
         valueMin={minStock}
         valueMax={maxStock}
-        rangePriceMin={rangeStockMin}
-        rangePriceMax={rangeStockMax}
+        rangePriceMin={rangeStockMin < rangeStockMax ? rangeStockMin : rangeStockMax}
+        rangePriceMax={rangeStockMin < rangeStockMax ? rangeStockMax : rangeStockMin}
         onChangeFirst={changeStockFirst}
         onChangeSecond= {changeStockSecond}
       />

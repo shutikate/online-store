@@ -1,19 +1,31 @@
 import { useContext } from "react";
-import { ProductElementWrapper } from "./products-list.styled";
+import { ProductElementWrapper, ProductElementWrapperBig } from "./products-list.styled";
 import ProductElement from "../../../../components/product-element/product-element";
+import ProductElementSecond from "../../../../components/product-element/product-element-second";
 import { ProductsContext } from '../../../../context/products-context';
+import { useSearchParams } from 'react-router-dom';
 
 const ProductsList = () => {
   const { currentProducts } = useContext(ProductsContext);
+  const [searchParams] = useSearchParams();
 
   return (
-    <ProductElementWrapper>
+    !searchParams.get('big') || searchParams.get('big') === 'false'
+    ? <ProductElementWrapper>
       {
         currentProducts.map((product) =>
         <ProductElement key={product.id} {...product} />
         )
       }
-    </ProductElementWrapper>
+      </ProductElementWrapper>
+    : <ProductElementWrapperBig>
+      {
+        currentProducts.map((product) =>
+        <ProductElementSecond key={product.id} {...product} />
+        )
+      }
+      </ProductElementWrapperBig>
+
   )
 }
 

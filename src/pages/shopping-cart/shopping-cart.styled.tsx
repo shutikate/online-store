@@ -18,6 +18,9 @@ export const CheckoutHeader = styled.div`
 `;
 
 export const HeaderBlock = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   text-transform: capitalize;
   width: 23%;
 

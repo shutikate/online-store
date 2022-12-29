@@ -90,3 +90,10 @@ export const SearchInput = styled.input`
     outline-bottom: black;
   }
 `
+
+export const ButtonChangeCardLayout = styled.div`
+  width: 40px;
+  height: 40px;
+  border: 1px solid #000000;
+  cursor: pointer;
+`

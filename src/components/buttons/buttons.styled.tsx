@@ -23,6 +23,29 @@ export const BaseButton = styled.button`
   }
 `;
 
+export const SmallButton = styled.button`
+  min-width: 4rem;
+  width: auto;
+  height: 4rem;
+  padding: 0 2rem 0 2rem;
+  font-size: 1rem;
+  background-color: black;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bolder;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+  }
+`;
+
 export const InvertedButton = styled(BaseButton)`
   background-color: white;
   color: black;
