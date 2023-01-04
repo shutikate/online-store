@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import CartIcon from "../cart-icon/cart-icon";
-import { useContext, useMemo } from "react";
+import { useContext } from "react";
 import { ProductsContext } from "../../context/products-context";
 import {
   NavigationContainer,
