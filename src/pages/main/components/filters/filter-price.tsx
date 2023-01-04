@@ -32,17 +32,21 @@ const FilterPrice = () => {
 
   }, [currentProducts]);
 
-  const changePriceFirst = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setRangePriceMin(Number(e.target.value));
+  const changePriceFirst = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setRangePriceMin(Number(event.target.value));
     updateUsedFilter('price');
-    searchParams.set('price', `${Number(e.target.value)}` + '↕' + `${rangePriceMax}`);
+    searchParams.set('price', (Number(event.target.value) < rangePriceMax) ?
+                    `${Number(event.target.value)}` + '↕' + `${rangePriceMax}`:
+                    `${rangePriceMax}` + '↕' + `${Number(event.target.value)}`);
     setSearchParams(searchParams);
   }
 
-  const changePriceSecond = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setRangePriceMax(Number(e.target.value));
+  const changePriceSecond = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setRangePriceMax(Number(event.target.value));
     updateUsedFilter('price');
-    searchParams.set('price', `${rangePriceMin}` + '↕' + `${Number(e.target.value)}`);
+    searchParams.set('price', (Number(event.target.value) > rangePriceMin) ?
+                      `${rangePriceMin}` + '↕' + `${Number(event.target.value)}`:
+                      `${Number(event.target.value)}` + '↕' + `${rangePriceMin}`);
     setSearchParams(searchParams);
   }
 
@@ -50,8 +54,8 @@ const FilterPrice = () => {
     <RangeSlider
         valueMin={minPrice}
         valueMax={maxPrice}
-        rangePriceMin={rangePriceMin}
-        rangePriceMax={rangePriceMax}
+        rangePriceMin={rangePriceMin < rangePriceMax ? rangePriceMin : rangePriceMax}
+        rangePriceMax={rangePriceMin < rangePriceMax ? rangePriceMax : rangePriceMin}
         onChangeFirst={changePriceFirst}
         onChangeSecond= {changePriceSecond}
       />

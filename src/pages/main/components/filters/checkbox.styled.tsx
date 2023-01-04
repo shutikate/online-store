@@ -25,7 +25,7 @@ export const Input = styled.input`
 
 export const Label = styled.label`
   padding-left: 25px;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   color: rgba(74, 74, 74);
   cursor: pointer;
 
@@ -61,7 +61,7 @@ export const Label = styled.label`
 `
 
 export const NumberOfProducts = styled.div`
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   margin-right: 10px;
 `
 

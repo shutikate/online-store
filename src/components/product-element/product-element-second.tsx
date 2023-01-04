@@ -1,29 +1,42 @@
 import { FC, useContext } from "react";
-import { ProductElementContainer, PriceWrapper, ProductLink } from "./product-element.styled";
+import { ProductElementContainer, DescriptionWrapper, PriceWrapper, DescriptionText, ImgWrapper, ProductLink } from "./product-element.styled";
 import Button, { BUTTON_TYPE_CLASSES } from "../buttons/buttons";
 import { IProducts } from "../../api/products";
 import { ProductsContext } from "../../context/products-context";
 
-const ProductElement: FC<Partial<IProducts>> = ({
+const ProductElementSecond: FC<IProducts> = ({
   title,
   price,
   thumbnail,
   id,
+  description,
+  discountPercentage,
+  brand
 }) =>
 {
   const { addProductIdToCart, dropProductFromCart, isProductInCart } = useContext(ProductsContext);
   return (
     <ProductElementContainer>
-      <ProductLink to={`/product-details/${id}`}>
+      <ProductLink to="/product-details">
         <PriceWrapper>
           <p>{title}</p>
           <p>{price}$</p>
         </PriceWrapper>
-          <img
-            src={thumbnail}
-            alt=""
-            id={String(id)}
-          ></img>
+        <DescriptionWrapper>
+            <ImgWrapper>
+              <img
+                src={thumbnail}
+                alt=""
+                id={String(id)}
+              ></img>
+            </ImgWrapper>
+          <DescriptionText>
+            {description}<br />
+            <br />
+            discount: {discountPercentage}%<br />
+            brand: {brand}
+          </DescriptionText>
+        </DescriptionWrapper>
       </ProductLink>
       {isProductInCart(id)
         ? <Button onClick={() => id && dropProductFromCart(id)} buttonType={BUTTON_TYPE_CLASSES.base}>Drop from card</Button>
@@ -33,4 +46,4 @@ const ProductElement: FC<Partial<IProducts>> = ({
   );
 };
 
-export default ProductElement;
+export default ProductElementSecond;

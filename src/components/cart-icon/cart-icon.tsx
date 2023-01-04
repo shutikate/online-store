@@ -1,11 +1,13 @@
+import { useContext } from 'react';
 import { ShoppingIcon, CartIconContainer, ItemCount } from "./cart-icon.styled";
+import { ProductsContext } from '../../context/products-context';
+
 const CartIcon = () => {
-  //const { isCartOpen, setIsCartOpen, cartCount } = useContext(CartContext);
-  const cartCount = 0;
+  const { cartTotalAmount } = useContext(ProductsContext);
   return (
     <CartIconContainer>
       <ShoppingIcon className="shopping-icon" />
-      <ItemCount>{cartCount}</ItemCount>
+      <ItemCount>{cartTotalAmount}</ItemCount>
     </CartIconContainer>
   );
 };

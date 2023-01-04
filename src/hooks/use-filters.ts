@@ -29,7 +29,14 @@ const filterByStock = (product: IProducts, params: string[]) => {
 };
 
 const filterBySearch = (product: IProducts, params: string[]) => {
-  return (product.title.toLowerCase()).includes(params[0].toLowerCase());
+  return (product.title.toLowerCase()).includes(params[0].toLowerCase()) ||
+         (product.brand.toLowerCase()).includes(params[0].toLowerCase()) ||
+         (product.category.toLowerCase()).includes(params[0].toLowerCase()) ||
+         (product.description.toLowerCase()).includes(params[0].toLowerCase()) ||
+         (String(product.rating)).includes(params[0]) ||
+         (String(product.stock)).includes(params[0]) ||
+         (String(product.price)).includes(params[0]) ||
+         (String(product.discountPercentage)).includes(params[0])
 };
 
 const filterMatcher = {
@@ -37,14 +44,14 @@ const filterMatcher = {
   brand: filterByBrands,
   price: filterByPrice,
   search: filterBySearch,
-  stock: filterByStock
+  stock: filterByStock,
 };
 
 export const useFilters = (products: IProducts[]) => {
   const [ searchParams ] = useSearchParams();
   const [ usedFilter, updateUsedFilter ] = useState('');
 
-  const currentProducts = useMemo(() => {
+  const filteredProducts = useMemo(() => {
     const paramKeys = [...searchParams.keys()];
 
     return products.filter(product =>
@@ -55,5 +62,5 @@ export const useFilters = (products: IProducts[]) => {
     );
   }, [products, searchParams.toString()])
 
-  return {currentProducts, usedFilter, updateUsedFilter};
+  return {filteredProducts, usedFilter, updateUsedFilter};
 }

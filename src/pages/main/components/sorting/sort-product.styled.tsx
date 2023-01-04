@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, {css} from "styled-components"
 
 export const ProductsSorting = styled.div`
   position: relative;
@@ -89,4 +89,21 @@ export const SearchInput = styled.input`
     outline: none;
     outline-bottom: black;
   }
+`
+
+export const ButtonChangeCardLayout = styled.div<{active?: boolean}>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-bottom: 2px solid #000000;
+  font-size: 2rem;
+  cursor: pointer;
+
+  ${props =>
+    props.active &&
+    css`
+      background: rgba(189, 195, 199, 0.6);
+    `};
 `

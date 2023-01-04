@@ -1,20 +1,19 @@
 import { useState, useEffect } from 'react';
 import { IProducts, getAllProducts } from '../api/products';
 import { useFilters } from './use-filters';
+import { useCart } from './use-cart';
+import { useSorting } from './use-sorting';
 
 export const useGetProducts = () => {
   const [allProducts, setProducts] = useState<IProducts[]>([]);
-  const [productsIdForCart, setCartIdProducts] = useState<number[]>([]);
-  const filtersData = useFilters(allProducts);
-
-  const addProductIdToCart = (id: number) => {
-    setCartIdProducts([...productsIdForCart, id]);
-  }
+  const { filteredProducts, ...filtersData } = useFilters(allProducts);
+  const sortedProducts = useSorting(filteredProducts);
+  const cartData = useCart(allProducts);
 
   useEffect (() => {
     getAllProducts()
       .then(products => setProducts(products));
   }, []);
 
-  return {...filtersData, allProducts, productsIdForCart, cartProducts: [], addProductIdToCart };
+  return {...filtersData, ...cartData, allProducts, currentProducts: sortedProducts };
 };
