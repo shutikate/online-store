@@ -1,4 +1,9 @@
-import { ProductsSorting, SortBlock, SortItems, SearchInput, FoundProducts, ButtonChangeCardLayout } from './sort-product.styled';
+import { ProductsSorting,
+        SortBlock,
+        SortItems,
+        SearchInput,
+        FoundProducts,
+        ButtonChangeCardLayout} from './sort-product.styled';
 import { ProductsContext } from '../../../../context/products-context';
 import { useContext, useMemo } from 'react';
 import { useSearchParams, } from 'react-router-dom';
@@ -44,20 +49,24 @@ const SortProduct = () => {
   return (
     <ProductsSorting>
       <SortBlock>
-        Sort options
+        {!searchParams.get('sort') ? 'Sort options' : searchParams.get('sort')}
         <SortItems onClick={sortProducts}>
-          <li id="priceAsc">Ascending price</li>
-          <li id="priceDesc">Descending price</li>
-          <li id="ratingAsc">Ascending rating</li>
-          <li id="ratingDesc">Descending rating</li>
-          <li id="discountAsc">Ascending discount</li>
-          <li id="discountDesc">Descending discount</li>
+          <li id="price-Asc">Ascending price</li>
+          <li id="price-Desc">Descending price</li>
+          <li id="rating-Asc">Ascending rating</li>
+          <li id="rating-Desc">Descending rating</li>
+          <li id="discount-Asc">Ascending discount</li>
+          <li id="discount-Desc">Descending discount</li>
         </SortItems>
       </SortBlock>
       <FoundProducts><span>Found:</span><span>{NumOfProducts}</span></FoundProducts>
-      <SearchInput type="text" placeholder="Search product" onChange={setSearchProduct}></SearchInput>
-      <ButtonChangeCardLayout onClick={changeCardLayoutSmall}></ButtonChangeCardLayout>
-      <ButtonChangeCardLayout onClick={changeCardLayoutBig}></ButtonChangeCardLayout>
+      <SearchInput type="text" placeholder="Search product" onChange={setSearchProduct} value={searchParams.get('search') ?? ''}></SearchInput>
+      {searchParams.get('big') === 'false'
+      ? <ButtonChangeCardLayout onClick={changeCardLayoutSmall} active>x 4</ButtonChangeCardLayout>
+      : <ButtonChangeCardLayout onClick={changeCardLayoutSmall}>x 4</ButtonChangeCardLayout>}
+      {searchParams.get('big') === 'true'
+      ? <ButtonChangeCardLayout onClick={changeCardLayoutBig} active>x 2</ButtonChangeCardLayout>
+      : <ButtonChangeCardLayout onClick={changeCardLayoutBig}>x 2</ButtonChangeCardLayout>}
     </ProductsSorting>
   )
 }

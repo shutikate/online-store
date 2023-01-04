@@ -7,9 +7,9 @@ interface CartData {
   }
 }
 
-const putCartToLocalStorage = (cartData: CartData) => localStorage.setItem('cart', JSON.stringify(cartData));
+const putCartToLocalStorage = (cartData: CartData) => localStorage.setItem('cart-shutikate', JSON.stringify(cartData));
 
-const getCartFromLocalStorage = (): CartData => JSON.parse(localStorage.getItem('cart') || '{}');
+const getCartFromLocalStorage = (): CartData => JSON.parse(localStorage.getItem('cart-shutikate') || '{}');
 
 export const useCart = (products: IProducts[]) => {
   const [productsDataInCart, setCartIdProducts] = useState<CartData>(getCartFromLocalStorage());
@@ -55,6 +55,7 @@ export const useCart = (products: IProducts[]) => {
         putCartToLocalStorage(updatedCart);
       }
     }
+
   };
 
   const getProductAmountInCart = (id: number) => {
@@ -62,7 +63,15 @@ export const useCart = (products: IProducts[]) => {
       return productsDataInCart[id].amount;
     }
     return 0;
-  }
+  };
+
+  const cartTotalAmount = useMemo(() => {
+    return cartProducts.reduce((acc, product) => acc + getProductAmountInCart(product.id), 0);
+  }, [cartProducts, productsDataInCart]);
+
+  const cartTotal = useMemo(() => {
+    return cartProducts.reduce((acc, product) => acc + (product.price * getProductAmountInCart(product.id)), 0);
+  }, [cartProducts, productsDataInCart]);
 
   return {
     addProductIdToCart,
@@ -71,6 +80,8 @@ export const useCart = (products: IProducts[]) => {
     decreaseProductAmount,
     getProductAmountInCart,
     isProductInCart,
+    cartTotal,
+    cartTotalAmount,
     cartProducts
   }
 };

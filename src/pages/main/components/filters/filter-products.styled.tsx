@@ -32,5 +32,15 @@ export const ProductsWrapper = styled.div`
   margin-bottom: 20px;
   height: 270px;
   overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 8px;
+    background-color: rgba(189, 195, 199, 0.6);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0);
+  }
 `
 

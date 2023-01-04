@@ -32,7 +32,11 @@ const filterBySearch = (product: IProducts, params: string[]) => {
   return (product.title.toLowerCase()).includes(params[0].toLowerCase()) ||
          (product.brand.toLowerCase()).includes(params[0].toLowerCase()) ||
          (product.category.toLowerCase()).includes(params[0].toLowerCase()) ||
-         (product.description.toLowerCase()).includes(params[0].toLowerCase());
+         (product.description.toLowerCase()).includes(params[0].toLowerCase()) ||
+         (String(product.rating)).includes(params[0]) ||
+         (String(product.stock)).includes(params[0]) ||
+         (String(product.price)).includes(params[0]) ||
+         (String(product.discountPercentage)).includes(params[0])
 };
 
 const filterMatcher = {

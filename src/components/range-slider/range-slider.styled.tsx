@@ -88,7 +88,7 @@ export const SliderTrack = styled.div`
 export const InputValues = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 0 auto 20px;
+  margin: 0 auto 10px;
   width: 80%;
-  font-size: 2rem;
+  font-size: 1.6rem;
 `

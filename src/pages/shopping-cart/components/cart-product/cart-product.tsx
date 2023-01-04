@@ -1,5 +1,18 @@
 import { FC, useContext } from "react";
-import { CartProductContainer } from "./cart-product.styled";
+import { Link } from "react-router-dom";
+import {
+  CartProductContainer,
+  ImgWrapper,
+  NumberWrapper,
+  CartDescriptionWrapper,
+  NameProductWrapper,
+  DescriptionOfProduct,
+  RatingDiscountWrapper,
+  ProductAmountInCart,
+  ButtonPriceWrapper,
+  ButtonWrapper,
+  Price
+} from "./cart-product.styled";
 import Button, { BUTTON_TYPE_CLASSES } from "../../../../components/buttons/buttons";
 import { IProducts } from "../../../../api/products";
 import { ProductsContext } from "../../../../context/products-context";
@@ -24,25 +37,33 @@ const CartProduct: FC<CartProductProps> = ({
   const productAmountInCart = getProductAmountInCart(id);
   return (
     <CartProductContainer>
-      <p>{index + 1}</p>
-      <img
-        onClick={(e) => {
-          console.log(e.target);
-        }}
-        src={thumbnail}
-        alt=""
-        id={String(id)}
-      ></img>
-      <div>
-        <p>{title}</p>
-        <p>{description}$</p>
-        <p>Rating: {rating}</p>
-        <p>Discount: {discountPercentage} %</p>
-        <p></p>
-      </div>
-      <Button disabled={productAmountInCart >= stock} onClick={() => increaseProductAmount(id)} buttonType={BUTTON_TYPE_CLASSES.small}>+</Button>
-        <p>{productAmountInCart}</p>
-      <Button onClick={() => decreaseProductAmount(id)} buttonType={BUTTON_TYPE_CLASSES.small}>-</Button>
+      <NumberWrapper>{index + 1}</NumberWrapper>
+      <ImgWrapper>
+        <Link to={`/product-details/${id}`}>
+          <img
+            src={thumbnail}
+            alt=""
+            id={String(id)}
+          ></img>
+        </Link>
+      </ImgWrapper>
+      <CartDescriptionWrapper>
+        <NameProductWrapper>{title}</NameProductWrapper>
+        <DescriptionOfProduct>{description}</DescriptionOfProduct>
+        <RatingDiscountWrapper>
+          <p>Rating: {rating}</p>
+          <p>Discount: {discountPercentage}%</p>
+          <p>Stock: {stock}</p>
+        </RatingDiscountWrapper>
+      </CartDescriptionWrapper>
+      <ButtonPriceWrapper>
+        <ButtonWrapper>
+          <Button disabled={productAmountInCart >= stock} onClick={() => increaseProductAmount(id)} buttonType={BUTTON_TYPE_CLASSES.small}>+</Button>
+            <ProductAmountInCart>{productAmountInCart}</ProductAmountInCart>
+          <Button onClick={() => decreaseProductAmount(id)} buttonType={BUTTON_TYPE_CLASSES.small}>-</Button>
+        </ButtonWrapper>
+        <Price>${price * productAmountInCart}</Price>
+      </ButtonPriceWrapper>
     </CartProductContainer>
   );
 };

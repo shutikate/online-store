@@ -6,7 +6,7 @@ export const BaseButton = styled.button`
   height: 4rem;
   padding: 0 2rem 0 2rem;
   font-size: 1rem;
-  background-color: black;
+  background-color: rgba(0, 0, 0);
   color: white;
   text-transform: uppercase;
   font-weight: bolder;
@@ -24,12 +24,11 @@ export const BaseButton = styled.button`
 `;
 
 export const SmallButton = styled.button`
-  min-width: 4rem;
+  min-width: 3rem;
   width: auto;
-  height: 4rem;
-  padding: 0 2rem 0 2rem;
+  height: 3rem;
   font-size: 1rem;
-  background-color: black;
+  background-color: rgba(0, 0, 0);
   color: white;
   text-transform: uppercase;
   font-weight: bolder;

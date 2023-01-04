@@ -27,12 +27,12 @@ const sortByDiscountDesc = (products: Array<IProducts>) => {
 }
 
 const sortMatcher = {
-  priceAsc: sortByPriceAsc,
-  priceDesc: sortByPriceDesc,
-  ratingAsc: sortByRatingAsc,
-  ratingDesc: sortByRatingDesc,
-  discountAsc: sortByDiscountAsc,
-  discountDesc: sortByDiscountDesc
+  'price-Asc': sortByPriceAsc,
+  'price-Desc': sortByPriceDesc,
+  'rating-Asc': sortByRatingAsc,
+  'rating-Desc': sortByRatingDesc,
+  'discount-Asc': sortByDiscountAsc,
+  'discount-Desc': sortByDiscountDesc
 };
 
 export const useSorting = (products: IProducts[]) => {

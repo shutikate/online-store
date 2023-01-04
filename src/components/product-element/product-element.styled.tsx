@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const ProductElementContainer = styled.div`
   padding: 10px 0;
@@ -7,7 +8,7 @@ export const ProductElementContainer = styled.div`
   flex-direction: column;
   align-items: center;
   color: rgba(74, 74, 74);
-  border: 1px solid #000000;
+  border: 2px solid #000000;
   overflow: hidden;
 
   p {
@@ -28,19 +29,23 @@ export const ProductElementContainer = styled.div`
   }
 `;
 
+export const ProductLink = styled(Link)`
+  width: 100%;
+  overflow: hidden;
+  text-decoration: none;
+  color: rgba(74, 74, 74)
+`
+
 export const ImgWrapper = styled.div`
-  width: 50%;
   margin-right: 10px;
+  width: 100%;
   overflow: hidden;
 `
 
 export const PriceWrapper = styled.div`
   width: 100%;
-  height: 40px;
+  height: 45px;
   margin-bottom: 5px;
-  // display: flex;
-  // justify-content: space-between;
-  // align-items: end;
   text-align: center;
   font-size: 1.4rem;
   font-weight: bold;
@@ -59,4 +64,5 @@ export const DescriptionWrapper = styled.div`
 
 export const DescriptionText = styled.div`
   flex-basis: 50%;
+  flex-shrink: 0;
 `

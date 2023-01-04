@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ProductElementWrapper, ProductElementWrapperBig } from "./products-list.styled";
+import { ProductElementWrapper, ProductElementWrapperBig, ProductNotFoundWrapper } from "./products-list.styled";
 import ProductElement from "../../../../components/product-element/product-element";
 import ProductElementSecond from "../../../../components/product-element/product-element-second";
 import { ProductsContext } from '../../../../context/products-context';
@@ -10,6 +10,9 @@ const ProductsList = () => {
   const [searchParams] = useSearchParams();
 
   return (
+    currentProducts.length === 0
+    ? <ProductNotFoundWrapper>Products not found, please select other search options</ProductNotFoundWrapper>
+    :
     !searchParams.get('big') || searchParams.get('big') === 'false'
     ? <ProductElementWrapper>
       {

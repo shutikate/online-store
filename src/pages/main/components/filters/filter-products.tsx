@@ -5,13 +5,14 @@ import FilterBrands from './filter-brands';
 import FilterCategory from './filter-category';
 import Button from '../../../../components/buttons/buttons';
 import { useSearchParams } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { ProductsContext } from '../../../../context/products-context';
 
 const FilterProduct = () => {
 
   const [ searchParams, setSearchParams ] = useSearchParams();
   const { updateUsedFilter } = useContext(ProductsContext);
+  const [ copyText, setCopyText ] = useState('Copy Link');
 
   const resetFilters = () => {
     updateUsedFilter('');
@@ -24,13 +25,15 @@ const FilterProduct = () => {
 
   const copyLink = () => {
     navigator.clipboard.writeText(window.location.href);
+    setCopyText('Copied!');
+    setTimeout(() => {setCopyText('Copy Link')}, 1500);
   }
 
   return (
     <FilterWrapper>
       <ButtonWrapper>
         <Button onClick={resetFilters}>Reset filters</Button>
-        <Button onClick={copyLink}>Copy Link</Button>
+        <Button onClick={copyLink}>{copyText}</Button>
       </ButtonWrapper>
       <NameFiltersBlock>Price</NameFiltersBlock>
       <FilterPrice />
