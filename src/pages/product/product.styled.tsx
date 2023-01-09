@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+// export const Wrapper = styled.div`
+//   flex: 1 1 auto;
+// `
+
 export const ProductDescriptionWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -63,6 +67,7 @@ export const AllImages = styled.div`
 
 export const BigImage = styled.div`
 
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -72,6 +77,13 @@ export const BigImage = styled.div`
     max-height: 50vh;
     width: auto;
     max-width: 100%;
+    transition: all 0.5s;
+
+    &:hover {
+      position: absolute;
+      transform: scale(1.4);
+      z-index: 1;
+    }
   }
 `
 
@@ -114,6 +126,15 @@ export const PriceWrapper = styled.div`
 
 export const Price = styled.div`
   font-size: 3.5rem;
+`
+
+export const EmptyProduct = styled.div`
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+  font-size: 3rem;
+  text-transform: uppercase;
+  font-weight: bolder;
 `
 
 

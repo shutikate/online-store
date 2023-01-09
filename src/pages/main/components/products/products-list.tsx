@@ -11,7 +11,7 @@ const ProductsList = () => {
 
   return (
     currentProducts.length === 0
-    ? <ProductNotFoundWrapper>Products not found, please select other search options</ProductNotFoundWrapper>
+    ? <ProductNotFoundWrapper>Products not found</ProductNotFoundWrapper>
     :
     !searchParams.get('big') || searchParams.get('big') === 'false'
     ? <ProductElementWrapper>

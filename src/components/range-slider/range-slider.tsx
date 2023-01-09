@@ -1,5 +1,11 @@
 import { FC } from 'react';
-import { SliderWrapper, InputRange, SliderTrack, InputValues, SliderContainer } from "./range-slider.styled";
+import {
+  SliderWrapper,
+  InputRange,
+  SliderTrack,
+  InputValues,
+  SliderContainer
+} from "./range-slider.styled";
 
 interface Value {
   valueMin: number;

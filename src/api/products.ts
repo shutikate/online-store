@@ -22,6 +22,6 @@ export interface IProducts {
 }
 
 export async function getAllProducts () {
-  const res = await axios.get<IData>('https://dummyjson.com/products?limit=100');
+  const res = await axios.get<IData>('https://raw.githubusercontent.com/shutikate/online-shop-photo/main/data.json');
   return res.data.products;
 }

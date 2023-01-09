@@ -17,4 +17,5 @@ export const ProductNotFoundWrapper = styled.div`
   font-weight: bold;
   text-transform: uppercase;
   margin-top: 50px;
+  text-align: center;
 `

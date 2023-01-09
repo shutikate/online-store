@@ -30,7 +30,7 @@ export const ProductsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
-  height: 270px;
+  height: 260px;
   overflow-y: scroll;
 
   &::-webkit-scrollbar {

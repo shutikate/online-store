@@ -1,5 +1,5 @@
-import { FC } from "react";
 import { useForm, Controller } from "react-hook-form";
+import { FC } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Button, { BUTTON_TYPE_CLASSES } from "../../../../components/buttons/buttons";
@@ -14,7 +14,7 @@ import {
 } from './purchase.styled';
 
 interface PurchaseProps {
-  onClosePurchaseModal?: () => void;
+  onConfirm: () => void;
 }
 
 interface FormData {
@@ -28,11 +28,11 @@ interface FormData {
 }
 
 const ERRORS = {
-  name: "Name and surname should consist of at least 2 words every minimum 3 symbols.",
+  name: "Name and surname should consist of at least 2 words every minimum 3 symbols",
   phone: "Should start from + and consist of at least 9 numbers",
   address: "Should consist of at least 3 words every minimum 5 symbols",
-  cardNumber: "Should consist of 16 numbers.",
-  valid: "Valid date should consist of month and year.",
+  cardNumber: "Should consist of 16 numbers",
+  valid: "Valid date should consist of month and year",
   cvv: "CVV code should consist of 3 numbers",
 }
 
@@ -85,7 +85,7 @@ const schema = yup.object({
   ),
 });
 
-const Purchase: FC<PurchaseProps> = () => {
+const Purchase: FC<PurchaseProps> = ({ onConfirm }) => {
   const { register, handleSubmit, control, formState: { errors } } = useForm<FormData>({
     resolver: yupResolver(schema),
     defaultValues: {
@@ -98,7 +98,9 @@ const Purchase: FC<PurchaseProps> = () => {
       cvv: '',
     }
   });
-  const onSubmit = handleSubmit(data => console.log(data, errors));
+
+  const onSubmit = handleSubmit(onConfirm);
+
   return (
     <Form onSubmit={onSubmit}>
       <Details>Personal details</Details>

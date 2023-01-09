@@ -31,6 +31,11 @@ export const useCart = (products: IProducts[]) => {
     setCartIdProducts(updatedCart);
   };
 
+  const clearCart = () => {
+    setCartIdProducts({});
+    putCartToLocalStorage({});
+  }
+
   const isProductInCart = (id?: number) => {
     return id ? id in productsDataInCart : false;
   }
@@ -80,6 +85,7 @@ export const useCart = (products: IProducts[]) => {
     decreaseProductAmount,
     getProductAmountInCart,
     isProductInCart,
+    clearCart,
     cartTotal,
     cartTotalAmount,
     cartProducts

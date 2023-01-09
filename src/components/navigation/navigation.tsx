@@ -9,6 +9,12 @@ import {
   LogoContainer,
   LogoText,
   TotalCartText,
+  RSSchoolIcon,
+  GithubIcon,
+  FooterText,
+  Footer,
+  Container,
+  MainContainer
 } from "./navigation.styled";
 
 const Navigation = () => {
@@ -16,7 +22,7 @@ const Navigation = () => {
   const { cartTotal } = useContext(ProductsContext);
 
   return (
-    <>
+    <Container>
       <NavigationContainer>
         <LogoContainer to="/">
           <LogoText>Online-Shop</LogoText>
@@ -29,8 +35,19 @@ const Navigation = () => {
           </NavLink>
         </NavLinks>
       </NavigationContainer>
-      <Outlet />
-    </>
+      <MainContainer>
+        <Outlet />
+      </MainContainer>
+      <Footer>
+        <a href="https://rs.school/js/">
+          <RSSchoolIcon></RSSchoolIcon>
+        </a>
+        <FooterText>2022</FooterText>
+        <a href="https://github.com/shutikate">
+          <GithubIcon></GithubIcon>
+        </a>
+      </Footer>
+    </Container>
   );
 };
 

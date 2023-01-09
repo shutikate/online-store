@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import PurchaseModal from 'react-modal';
 
 export const CartContainer = styled.div`
   width: 100%;
@@ -55,11 +56,20 @@ export const Total = styled.span`
   font-size: 36px;
 `;
 
-export const EmptyCart = styled.div`
-  margin-top: 20px;
+export const MessageWrapper = styled.div`
   width: 100%;
   text-align: center;
   font-size: 3rem;
   text-transform: uppercase;
   font-weight: bolder;
+`
+
+export const Modal = styled(PurchaseModal)`
+  padding: 20px 0;
+  position: absolute;
+  border: 1px solid black;
+  background-color: rgba(255, 255, 255, 0.9);
+  top: calc(50% - 230px);
+  left: 10%;
+  width: 80%;
 `

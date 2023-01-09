@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const NotFoundContainer = styled.div`
+  padding-top: 60px;
   display: flex;
   height: 100vh;
   flex-direction: column;
