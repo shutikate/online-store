@@ -7,7 +7,6 @@ export const usePromo = (promocodes: IPromocode[], totalAmount: number) => {
   const setPromoToLocalStorage = (appliedCodes: IPromocode[]) => localStorage.setItem('promo-shutikate', JSON.stringify(appliedCodes));
 
   const [ appliedCodes, setAppliedCodes] = useState<IPromocode[]>(getPromoFromLocalStorage());
-  console.log(appliedCodes);
   const [ inputValue, setInputValue ] = useState<string>('');
 
   const totalAmountPromo = useMemo(() => {

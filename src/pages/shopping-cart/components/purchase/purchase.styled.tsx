@@ -22,12 +22,11 @@ export const Details = styled.p`
 
 export const Input = styled.input`
   width: 100%;
-  padding: 5px;
+  height: 35px;
   margin-bottom: 5px;
   border: 2px solid rgba(74, 74, 74);
   font-size: 1.4rem;
   color: rgba(74, 74, 74);
-  text-transform: uppercase;
   text-align: center;
 `
 

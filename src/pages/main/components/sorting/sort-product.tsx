@@ -1,9 +1,11 @@
-import { ProductsSorting,
-        SortBlock,
-        SortItems,
-        SearchInput,
-        FoundProducts,
-        ButtonChangeCardLayout} from './sort-product.styled';
+import {
+  ProductsSorting,
+  SortBlock,
+  SortItems,
+  SearchInput,
+  FoundProducts,
+  ButtonChangeCardLayout
+} from './sort-product.styled';
 import { ProductsContext } from '../../../../context/products-context';
 import { useContext, useMemo } from 'react';
 import { useSearchParams, } from 'react-router-dom';

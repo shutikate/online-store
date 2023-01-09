@@ -1,12 +1,15 @@
-import { useContext, useMemo, useState } from 'react';
-import PurchaseModal from 'react-modal';
+import { useContext, useEffect, useMemo, useState } from 'react';
+import { useNavigate } from "react-router-dom";
+import { useSearchParams } from 'react-router-dom';
+// import PurchaseModal from 'react-modal';
 import {
   CartContainer,
   CheckoutContainer,
   CheckoutHeader,
   HeaderBlock,
   NumberWrapper,
-  EmptyCart
+  MessageWrapper,
+  Modal
 } from './shopping-cart.styled';
 import { ProductsContext } from '../../context/products-context';
 import { usePagination } from '../../hooks/use-pagination';
@@ -22,9 +25,21 @@ const promocodes = [
 ];
 
 const ShoppingCart = () => {
-  const { cartProducts, cartTotalAmount, cartTotal } = useContext(ProductsContext);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [ searchParams, setSearchParams ] = useSearchParams();
+  const navigate = useNavigate();
+  const { cartProducts, cartTotalAmount, cartTotal, clearCart } = useContext(ProductsContext);
+  const [modalIsOpen, setModalIsOpen] = useState(searchParams.get('isBuyNowOpened') === 'true');
+  const [isConfirm, setIsConfirm] = useState(false);
   const cartProductsWithIndexes = useMemo(() => cartProducts.map((product, index) => ({ ...product, index })), [cartProducts]);
+
+  const onConfirm = () => {
+    setIsConfirm(true);
+    setTimeout(() => {
+      navigate('/');
+      clearCart();
+      localStorage.setItem('promo-shutikate', JSON.stringify([]));
+    }, 3000)
+  };
 
   const {
     currentItems: paginatedCartProducts,
@@ -35,6 +50,11 @@ const ShoppingCart = () => {
     goPrevPage,
     goNextPage,
   } = usePagination(cartProductsWithIndexes, 3);
+
+  useEffect(() => {
+    searchParams.delete('isBuyNowOpened');
+    setSearchParams(searchParams);
+  }, []);
 
   const onOpenPurchaseModal = () => {
     setModalIsOpen(true);
@@ -47,7 +67,7 @@ const ShoppingCart = () => {
   return (
     <CartContainer>
     {(cartTotalAmount === 0)
-    ? <EmptyCart>Cart is Empty</EmptyCart>
+    ? <MessageWrapper>Cart is Empty</MessageWrapper>
     :
     <>
       <CheckoutContainer>
@@ -68,7 +88,9 @@ const ShoppingCart = () => {
         {paginatedCartProducts.map(product => <CartProduct key={product.id} {...product} />)}
       </CheckoutContainer>
       <TotalCart promocodes={promocodes} totalAmount={cartTotal} productsAmount={cartTotalAmount} onOpenPurchaseModal={onOpenPurchaseModal} />
-      <PurchaseModal ariaHideApp={false} isOpen={modalIsOpen} onRequestClose={onClosePurchaseModal}><Purchase /></PurchaseModal>
+      <Modal ariaHideApp={false} isOpen={modalIsOpen} onRequestClose={onClosePurchaseModal}>
+        {isConfirm ? <MessageWrapper>Thanks for your order</MessageWrapper> : <Purchase onConfirm={onConfirm} />}
+      </Modal>
     </>
     }
     </CartContainer>
