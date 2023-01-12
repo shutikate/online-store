@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import { useSearchParams, } from 'react-router-dom';
 import { IProducts } from '../api/products';
 
-const filterByCategories = (product: IProducts, params: string[]) => {
+export const filterByCategories = (product: IProducts, params: string[]) => {
   return params.some((param) => param === product.category.toLowerCase());
 };
 
@@ -10,7 +10,7 @@ const filterByBrands = (product: IProducts, params: string[]) => {
   return params.some((param) => param === product.brand.toLowerCase());
 }
 
-const filterByPrice = (product: IProducts, params: string[]) => {
+export const filterByPrice = (product: IProducts, params: string[]) => {
   if (params.length === 1) {
     return product.price === Number(params[0]);
   } else {
@@ -28,7 +28,7 @@ const filterByStock = (product: IProducts, params: string[]) => {
   }
 };
 
-const filterBySearch = (product: IProducts, params: string[]) => {
+export const filterBySearch = (product: IProducts, params: string[]) => {
   return (product.title.toLowerCase()).includes(params[0].toLowerCase()) ||
          (product.brand.toLowerCase()).includes(params[0].toLowerCase()) ||
          (product.category.toLowerCase()).includes(params[0].toLowerCase()) ||

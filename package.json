@@ -2,12 +2,21 @@
   "name": "my-test-onlineshop",
   "version": "0.1.0",
   "private": true,
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "transform": {
+      "^.+\\.ts?$": "ts-jest"
+    },
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ]
+  },
   "dependencies": {
     "@hookform/resolvers": "^2.9.10",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
     "@types/node": "^16.18.8",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.9",
@@ -27,7 +36,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -49,10 +58,16 @@
     ]
   },
   "devDependencies": {
+    "@types/enzyme": "^3.10.12",
+    "@types/jest": "^29.2.5",
     "@types/react-modal": "^3.13.1",
     "@typescript-eslint/eslint-plugin": "^5.46.1",
     "@typescript-eslint/parser": "^5.46.1",
+    "enzyme": "^3.11.0",
     "eslint": "^8.29.0",
-    "eslint-plugin-react": "^7.31.11"
+    "eslint-plugin-react": "^7.31.11",
+    "jest": "^29.3.1",
+    "ts-jest": "^29.0.4",
+    "ts-node": "^10.9.1"
   }
 }

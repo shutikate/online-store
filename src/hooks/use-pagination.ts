@@ -1,7 +1,7 @@
 import { useMemo, useEffect } from 'react';
 import { useSearchParams, } from 'react-router-dom';
 
-const getLastPage = (itemsLength: number, limit: number) => Math.ceil(itemsLength / limit);
+export const getLastPage = (itemsLength: number, limit: number) => Math.ceil(itemsLength / limit);
 
 export const usePagination = <T>(input: T[], defaultLimit: number) => {
   const [ searchParams, setSearchParams ] = useSearchParams();

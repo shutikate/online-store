@@ -2,11 +2,11 @@ import { useSearchParams, } from 'react-router-dom';
 import { IProducts } from '../api/products';
 
 
-const sortByPriceAsc = (products: Array<IProducts>) => {
+export const sortByPriceAsc = (products: Array<IProducts>) => {
   return products.sort((a, b) => a.price - b.price);
 }
 
-const sortByPriceDesc = (products: Array<IProducts>) => {
+export const sortByPriceDesc = (products: Array<IProducts>) => {
   return products.sort((a, b) => b.price - a.price);
 }
 
